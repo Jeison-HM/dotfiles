@@ -1,3 +1,0 @@
-[submodule ".zsh/input"]
-	path = .zsh/input
-	url = https://github.com/zimfw/input.git
