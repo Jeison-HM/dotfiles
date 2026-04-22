@@ -1,0 +1,3 @@
+[submodule "shared/.zsh/input"]
+	path = shared/.zsh/input
+	url = https://github.com/zimfw/input.git

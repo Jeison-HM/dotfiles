@@ -1,0 +1,40 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "@mohak34/opencode-notifier@latest"
+  ],
+  "mcp": {
+    "docx": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "office-word-mcp-server",
+        "word_mcp_server"
+      ],
+      "enabled": true
+    },
+    "excel": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "excel-mcp-server",
+        "stdio"
+      ],
+      "enabled": true
+    },
+    "zotero": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "zotero-mcp-server",
+        "zotero-mcp"
+      ],
+      "enabled": false,
+      "environment": {
+        "ZOTERO_LOCAL": "true"
+      }
+    }
+  }
+}

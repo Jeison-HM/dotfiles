@@ -1,0 +1,121 @@
+{
+	// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Boxed Equation": {
+		"prefix": "boxeq",
+		"body": [
+			"\\begin{empheq}[box=\\eqbox]{align}",
+			"\t\\label{eq:${3:Name}}",
+			"\t${1:LeftSide} &= ${2:RightSide} \\\\\\\\ $0",
+			"\\end{empheq}"
+		],
+		"description": "Highlight Equation with a colored box"
+	},
+	"Circuit": {
+		"prefix": "circuit",
+		"body": [
+			"\\begin{circuit}[H]",
+			"\t\\centering",
+			"\t\\begin{circuitikz}[scale=1.25]",
+			"\t\t% Nodos",
+			"\t",
+			"\t\t%$0\\node[circ] (1) at (2,2) {};",
+			"\t\t%\\node[circ] (2) at (2,0) {};",
+			"\t",
+			"\t\t% Componentes",
+			"\t",
+			"\t\t\\draw $3",
+			"\t",
+			"\t\t% Ground",
+			"\t",
+			"\t\t%\\draw (0,0) node[sground]{};",
+			"\t",
+			"\t\t% Elementos",
+			"\t",
+			"\t\t%\\draw[dashed] (4,3) -- (5,4);",
+			"\t",
+			"\t\\end{circuitikz}",
+			"\t\\caption{${1:Title}}",
+			"\t\\label{circ:${2:Name}}",
+			"\\end{circuit}"
+		],
+		"description": "Standard circuit template"
+	},
+	"Image as Figure": {
+		"prefix": "image",
+		"body": [
+			"\\begin{figure}[H]",
+			"\t\\centering",
+			"\t\\includegraphics[width=5in]{${1:Image}}",
+			"\t\\caption{${2:Title}}",
+			"\t\\label{fig:${3:Name}}",
+			"\\end{figure}"
+		],
+		"description": "Insert image as figure"
+	},
+	"Anexo": {
+		"prefix": "anexo",
+		"body": [
+			"\\begin{anexo}[H]",
+			"\t\\centering",
+			"\t\\includegraphics[width=8in]{${1:Image}}",
+			"\t\\caption{${2:Title}}",
+			"\t\\label{anexo:${3:Name}}",
+			"\\end{anexo}"
+		],
+		"description": "Insert image as figure"
+	},
+	"Equations with arrow": {
+		"prefix": "arroweq",
+		"body": [
+			"\\begin{flalign*}",
+			"\t\\begin{minipage}{0.15\\textwidth}",
+			"\t\t\\raggedright",
+			"\t\t${1:Text}",
+			"\t\\end{minipage} \\hspace{1ex}",
+			"\t\\arrownote",
+			"\t\t& & ${2:Left} & = ${3:Right} & \\\\\\\\$0",
+			"\\end{flalign*}"
+		],
+		"description": "Highlight Equation with a colored box"
+	},
+	"Graph": {
+		"prefix": "graph",
+		"body": [
+			"\\begin{figure}[H]",
+			"\t\\centering",
+			"\t\\begin{tikzpicture}",
+			"\t\t% Graph",
+			"\t\t\\begin{scope}[]",
+			"\t\t\t\\begin{axis}[",
+			"\t\t\t\tscale only axis,",
+			"\t\t\t\txlabel=\\$${1:Xname}$ ($\\unit{\\\\${2:UnitCommand}}$),",
+			"\t\t\t\tylabel=\\$${3:Yname}$ ($\\unit{\\\\${4:UnitCommand}}$),",
+			"\t\t\t\t%ytick={0},",
+			"\t\t\t\t%xtick={0,1,2,3,4},",
+			"\t\t\t\t%xticklabels={0,\\$T_1$,\\$T_2$,\\$T_3$,\\$T_4$},",
+			"\t\t\t]",
+			"\t\t\t\\addplot[dashed, $0smooth, tension=1, color=c2, mark=*,mark options={solid, color=black}] coordinates {",
+			"\t\t\t\t(${7:x1},${8:y1})",
+			"\t\t\t};",
+			"\t\t\\end{axis}",
+			"\t\\end{scope}",
+			"\t\\end{tikzpicture}",
+			"\t\\caption{${5:Title}}",
+			"\t\\label{fig:${6:Name}}",
+			"\\end{figure}"
+		],
+		"description": "Standard template for plotting or scatter data"
+	}
+}
