@@ -1,0 +1,260 @@
+{
+    "layer": "top",
+    "height": 48,
+    "spacing": 0,
+    "modules-left": [
+        "custom/power",
+        "custom/pacman",
+        "mpris",
+        "privacy"
+    ],
+    "modules-center": [
+        "tray",
+        "clock",
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "cpu",
+        "memory",
+        "backlight",
+        "power-profiles-daemon",
+        "battery#front",
+        "battery#rear",
+        "pulseaudio",
+        "network",
+        "bluetooth"
+    ],
+    "hyprland/workspaces": {
+        "format": "{windows}",
+        // "format-window-separator": "n",
+        "window-rewrite-default": "",
+        "window-rewrite": {
+            "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
+            "class<firefox>": "", // Windows whose classes are "firefox"
+            "class<vivaldi-stable>": "",
+            "title<.*github.*>": "", // Windows whose title contains "github"
+            "class<kitty>": "󰞷",
+            "class<thunar>": "",
+            "class<xarchiver>": "",
+            "foot": "", // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
+            "class<codium>": "",
+            "Nextcloud": "",
+            "class<org.keepassxc.KeePassXC>": "",
+            "class<kicad>": "",
+            "class<org.freecad.FreeCAD>": "",
+            "class<draw.io>": "󰇞",
+            "class<vlc>": "󰕼",
+            "class<discord>": "",
+            "class<waveforms>": "",
+            "class<gimp>": "",
+            "class<xdg-desktop-portal-gtk>": "",
+            "class<ONLYOFFICE>": "",
+            "class<Zotero>": "",
+            "class<darktable>": "󰄄",
+            "class<Audacity>": "",
+            "class<com.obsproject.Studio>": ""
+            // "title<.* - (.*) - VSCodium>": "codium $1" // captures part of the window title and formats it into output
+        },
+        // Formatting omitted for brevity
+        "ignore-workspaces": [
+            "(special:)?chrome-sharing-indicator"
+        ]
+    },
+    "hyprland/window": {
+        "max-length": 130,
+        "separate-outputs": true
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        "format-disabled": "󱘖",
+        "format-disconnected": "󰤭",
+        "tooltip-format": "{ifname} via {gwaddr} 󰈀\n{bandwidthUpBytes} 󰳘\n{bandwidthDownBytes} 󰱦",
+        "tooltip-format-wifi": "{essid} ({frequency}GHz) \n{ifname} ({signaldBm}dBm) {icon}\n{bandwidthUpBytes} 󰳘\n{bandwidthDownBytes} 󰱦",
+        "tooltip-format-ethernet": "{ipaddr}/{cidr} {ifname} 󰈀\n{bandwidthUpBytes} 󰳘\n{bandwidthDownBytes} 󰱦",
+        "tooltip-format-disabled": "disabled",
+        "tooltip-format-disconnected": "disconnected",
+        "max-length": 50,
+        "on-click": "nmcli radio wifi | grep -q enabled && nmcli radio wifi off || nmcli radio wifi on",
+        "on-click-right": "nm-connection-editor"
+    },
+    "bluetooth": {
+        "format": "󰂲",
+        "format-on": "󰂯",
+        "format-connected": "{device_alias} ",
+        "format-connected-battery": "{device_alias} ({device_battery_percentage}%) ",
+        "tooltip-format": "{status}",
+        "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "bluetoothctl show | grep -q \"Powered: yes\" && bluetoothctl power off || bluetoothctl power on",
+        "on-click-right": "blueman-manager"
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "{usage}% 󰍛",
+        "max-length": 10,
+        "on-click": "kitty btop"
+    },
+    "tray": {
+        "icon-size": 19,
+        "spacing": 5
+    },
+    "memory": {
+        "interval": 10,
+        "format": "{used:0.1f}G "
+    },
+    "clock": {
+        "interval": 1,
+        "format": " {:%d.%m.%y  %I:%M %p}",
+        "locale": "en_US.UTF-8",
+        "tooltip-format": "<span size= '10pt' font='Hack Nerd Font'>{calendar}</span>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "min-brightness": 25.0,
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "{profile}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    "battery#front": {
+        "bat": "BAT0",
+        "states": {
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "󱐋 {capacity}%",
+        "format-plugged": "󱐋 {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "battery#rear": {
+        "bat": "BAT1",
+        "states": {
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "󱐋 {capacity}%",
+        "format-plugged": "󱐋 {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "pulseaudio": {
+        "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": "󰝟 {icon}  {format_source}",
+        "format-muted": "󰝟 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol -t 1"
+    },
+    "custom/power": {
+        "format": "󰣇",
+        "tooltip": false,
+        "on-click": "/home/jeison/.config/rofi/scripts/powermenu_t2"
+    },
+    "custom/pacman": {
+        "format": "󰏔 {text}",
+        "interval": 3600,
+        "return-type": "json",
+        "exec": "/home/jeison/.config/waybar/pacman-updates",
+        "exec-if": "exit 0",
+        "on-click": "$TERMINAL 'checkupdates'; pkill -SIGRTMIN+8 waybar",
+        "signal": 8
+    },
+    "mpris": {
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "player-icons": {
+            "default": "▶",
+            "mpv": ""
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "dynamic-order": [
+            "title",
+            "artist"
+        ],
+        "dynamic-len": 32
+    },
+    "privacy": {
+        "icon-spacing": 3,
+        "icon-size": 15,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "audio-in"
+            },
+            {
+                "type": "screenshare"
+            }
+        ]
+    }
+}

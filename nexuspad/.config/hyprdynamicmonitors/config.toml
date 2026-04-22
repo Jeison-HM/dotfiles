@@ -1,0 +1,24 @@
+[general]
+destination = "$HOME/.config/hypr/monitors.conf"
+
+[power_events]
+
+[power_events.dbus_query_object]
+path = "/org/freedesktop/UPower/devices/line_power_AC"
+
+[[power_events.dbus_signal_match_rules]]
+object_path = "/org/freedesktop/UPower/devices/line_power_AC"
+
+
+[profiles.LG]
+config_file = "/home/jeison/.config/hyprdynamicmonitors/hyprconfigs/LG.go.tmpl"
+config_file_type = "template"
+[profiles.LG.conditions]
+
+[[profiles.LG.conditions.required_monitors]]
+description = "AU Optronics 0x1536"
+monitor_tag = "monitor0"
+
+[[profiles.LG.conditions.required_monitors]]
+description = "LG Electronics LG HDR QHD 0x000633F3"
+monitor_tag = "monitor1"

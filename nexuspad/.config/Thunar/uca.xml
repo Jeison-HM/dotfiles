@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal</name>
+	<submenu></submenu>
+	<unique-id>1769145421747004-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Open kitty here</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>vscodium</icon>
+	<name>Open VSCodium</name>
+	<submenu></submenu>
+	<unique-id>1770139426502694-1</unique-id>
+	<command>codium %f</command>
+	<description>Open vscodium here</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<text-files/>
+</action>
+<action>
+	<icon>image-x-generic</icon>
+	<name>Copy Image</name>
+	<submenu></submenu>
+	<unique-id>1770136971370668-1</unique-id>
+	<command>xclip -sel clip -t $(file -b --mime-type %f) &lt; %f</command>
+	<description>Copy image content</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>insert-image</icon>
+	<name>Paste Image</name>
+	<submenu></submenu>
+	<unique-id>1770138055010479-2</unique-id>
+	<command>sh -c &apos;name=$(zenity --entry --text=&quot;Enter filename:&quot;); [ -n &quot;$name&quot; ] &amp;&amp; wl-paste &gt; &quot;$name.png&quot;&apos;</command>
+	<description>Paste clipboard image</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>disk-utility</icon>
+	<name>Format Drive...</name>
+	<submenu></submenu>
+	<unique-id>1770257667194553-1</unique-id>
+	<command>sh -c &apos;gnome-disks --block-device=$(findmnt -n -o SOURCE --target &quot;$1&quot;)&apos; -- %f</command>
+	<description>Launch disk utility</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+</actions>

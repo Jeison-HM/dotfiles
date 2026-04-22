@@ -1,0 +1,6 @@
+[Unit]
+Description=Battery status notification
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/battery-alert
